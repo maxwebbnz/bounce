@@ -6,6 +6,10 @@ import { useState, useRef } from 'react'
 import { View, Text, StyleSheet, Button } from 'react-native';
 import PhoneInput from "react-native-phone-number-input";
 import Authenticate from '../auth/Authenticate';
+
+//? for testing
+import { dataService } from '../dataservices/handler';
+
 export default function Welcome() {
     const [value, setValue] = useState("");
     const [valid, setValid] = useState(false);
@@ -41,7 +45,7 @@ export default function Welcome() {
                     withShadow
                 />
                 <Button
-                    onPress={Authenticate}
+                    onPress={dataService.get}
                     title="Login"
                     color="#841584"
                     accessibilityLabel="Authenticate with your phone number"
