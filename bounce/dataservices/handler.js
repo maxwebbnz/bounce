@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022 Bounce developed by alanmcilwaine and maxwebbnz
+ * All rights reserved.
+ */
 /**========================================================================
  *                             Data Handler
  *
@@ -14,7 +18,7 @@ import axios from 'axios';
 const dataService = {
     get: function (_toGet) {
         // make the get request
-        axios.get('http://localhost:8010/users')
+        axios.get('localhost:8010/users')
             .then(function (response) {
                 // handle success
                 console.log(response.data)
