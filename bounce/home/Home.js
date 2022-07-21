@@ -1,9 +1,13 @@
-import { View, Text, StyleSheet } from "react-native";
+/*
+ * Copyright (c) 2022 Bounce developed by alanmcilwaine and maxwebbnz
+ * All rights reserved.
+ */
+import { View, StyleSheet } from "react-native";
 import { globalStyle } from "../styles/global/global";
 import { homeStyle } from "../styles/home/Home"
 import { LinearGradient } from 'react-native-gradients';
 import Draw from "../components/personalised/Draw";
-
+import { Text } from "native-base";
 const colorList = [
     { offset: '100%', color: '#D18246', opacity: '1' },
     { offset: '50%', color: '#E99A5D', opacity: '1' },
@@ -28,7 +32,7 @@ export default function HomeContent() {
                 <LinearGradient colorList={colorList} />
 
             </View>
-            <Text style={{ fontSize: 30, marginTop: 80, color: 'white', width: '70%', marginLeft: 20, marginBottom: 80 }}>Discover places you've never been</Text>
+            <Text fontSize="3xl" style={{ marginTop: 80, color: 'white', width: '70%', marginLeft: 20, marginBottom: 80 }}>Discover places you've never been</Text>
             <Draw></Draw>
         </View >
     )
