@@ -51,7 +51,7 @@ function App() {
         </Stack.Navigator>
 
       </NavigationContainer>
-      <Navigation></Navigation>
+      <Navigation />
 
     </NativeBaseProvider>
   );

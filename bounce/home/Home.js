@@ -21,16 +21,19 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "100%",
     },
+    background: {
+        backgroundColor: '#D18246',
+    }
 });
 
 export default function HomeContent() {
     return (
-        <View>
+        <View style={styles.background}>
             <View style={styles.gradientBg}>
                 <LinearGradient colorList={colorList} />
             </View>
             <Text fontSize="3xl" style={{ marginTop: 80, color: 'white', width: '70%', marginLeft: 20, marginBottom: 20 }}>Discover places you've never been</Text>
-            <Draw></Draw>
+            <Draw />
         </View >
     )
 }
