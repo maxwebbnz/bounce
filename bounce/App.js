@@ -4,7 +4,7 @@
  */
 
 import * as React from 'react';
-import { View, Text } from 'react-native';
+// import {  } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Welcome from './home/Welcome';
@@ -13,6 +13,8 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { FirebaseRecaptchaVerifierModal, FirebaseRecaptchaBanner } from 'expo-firebase-recaptcha';
+import { NativeBaseProvider, Text, Box } from 'native-base';
+import Navigation from './components/Navigation';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -36,18 +38,22 @@ function App() {
 
   const recaptchaRef = React.useRef(null)
   return (
+    <NativeBaseProvider>
+      <NavigationContainer>
+        <FirebaseRecaptchaVerifierModal
+          ref={recaptchaRef}
+          firebaseConfig={firebaseConfig}
+          attemptInvisibleVerification={true}
+        />
+        <Stack.Navigator initialRouteName='HomeContent'>
+          <Stack.Screen name="Home" component={Welcome} options={{ headerShown: false }} />
+          <Stack.Screen name="HomeContent" component={HomeContent} options={{ headerShown: false }} />
+        </Stack.Navigator>
 
-    <NavigationContainer>
-      <FirebaseRecaptchaVerifierModal
-        ref={recaptchaRef}
-        firebaseConfig={firebaseConfig}
-        attemptInvisibleVerification={true}
-      />
-      <Stack.Navigator initialRouteName='HomeContent'>
-        <Stack.Screen name="Home" component={Welcome} options={{ headerShown: false }} />
-        <Stack.Screen name="HomeContent" component={HomeContent} options={{ headerShown: false }} />
-      </Stack.Navigator>
-    </NavigationContainer>
+      </NavigationContainer>
+      <Navigation></Navigation>
+
+    </NativeBaseProvider>
   );
 }
 
