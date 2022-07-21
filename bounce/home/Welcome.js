@@ -52,6 +52,10 @@ export default function Welcome() {
                     color="#841584"
                     accessibilityLabel="Authenticate with your phone number"
                 />
+                <Button
+                    title="Go to Details"
+                    onPress={() => navigation.navigate('HomeContent')}
+                />
             </View>
 
         </View>

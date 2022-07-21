@@ -8,6 +8,7 @@ import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Welcome from './home/Welcome';
+import HomeContent from './home/Home';
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -25,13 +26,13 @@ const firebaseConfig = {
 
 // Initialize Firebase
 
-// create a stack nav
-const Stack = createNativeStackNavigator();
-
 
 initializeApp(firebaseConfig);
 
 function App() {
+  // create a stack nav
+  const Stack = createNativeStackNavigator();
+
 
   const recaptchaRef = React.useRef(null)
   return (
@@ -42,8 +43,9 @@ function App() {
         firebaseConfig={firebaseConfig}
         attemptInvisibleVerification={true}
       />
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName='HomeContent'>
         <Stack.Screen name="Home" component={Welcome} options={{ headerShown: false }} />
+        <Stack.Screen name="HomeContent" component={HomeContent} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
