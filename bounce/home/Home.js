@@ -32,7 +32,7 @@ export default function HomeContent() {
             <View style={styles.gradientBg}>
                 <LinearGradient colorList={colorList} />
             </View>
-            <Text fontSize="3xl" style={{ marginTop: 80, color: 'white', width: '70%', marginLeft: 20, marginBottom: 20 }}>Discover places you've never been</Text>
+            <Text fontSize="3xl" style={{ marginTop: 80, color: 'white', width: '70%', marginLeft: 20, marginBottom: 20 }}>Discover places you've <Text style={{fontStyle: 'italic'}}>never</Text> been</Text>
             <Draw />
         </View >
     )

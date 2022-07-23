@@ -38,22 +38,26 @@ function App() {
 
   const recaptchaRef = React.useRef(null)
   return (
-    <NativeBaseProvider>
-      <NavigationContainer>
+    <NavigationContainer>
+
+      <NativeBaseProvider>
         <FirebaseRecaptchaVerifierModal
           ref={recaptchaRef}
           firebaseConfig={firebaseConfig}
           attemptInvisibleVerification={true}
         />
-        <Stack.Navigator initialRouteName='HomeContent'>
+        {/* Main router */}
+        <Stack.Navigator initialRouteName='Home'>
+          {/* Screens */}
           <Stack.Screen name="Home" component={Welcome} options={{ headerShown: false }} />
-          <Stack.Screen name="HomeContent" component={HomeContent} options={{ headerShown: false }} />
+          <Stack.Screen name="HomeContent" component={HomeContent} options={{ headerShown: false, animation: 'none' }} />
         </Stack.Navigator>
 
-      </NavigationContainer>
-      <Navigation />
+        <Navigation />
 
-    </NativeBaseProvider>
+      </NativeBaseProvider>
+    </NavigationContainer>
+
   );
 }
 

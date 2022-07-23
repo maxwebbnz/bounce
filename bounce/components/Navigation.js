@@ -5,13 +5,15 @@
 
 import { Box, Text, HStack, Center, Pressable, Stack } from 'native-base';
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Navigation() {
+    const navigation = useNavigation()
     return (
         <Box bg="white" width="100%" maxW="100%" alignSelf="center">
             <Center>
                 <HStack bg="light.300" alignItems="center" safeAreaBottom shadow={6}>
-                    <Pressable cursor="pointer" opacity={0.5} py="3" flex={1} >
+                    <Pressable cursor="pointer" opacity={0.5} py="3" flex={1} onPress={() => navigation.navigate('HomeContent')}>
                         <Center>
                             <Feather name="book-open" size={24} color="black" />
                             <Text>explore</Text>
