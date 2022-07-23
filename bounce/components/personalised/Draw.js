@@ -28,6 +28,11 @@ const draw = StyleSheet.create({
         width: 100,
         marginLeft: "35%",
         color: "#E69160"
+    },
+    banner: {
+        marginTop: 10,
+        borderTopRightRadius: 10,
+        borderBottomEndRadius: 10
     }
 })
 
@@ -49,7 +54,7 @@ function MainTopic() {
                             uri: "https://images.squarespace-cdn.com/content/v1/565e91efe4b0d50dfc8fdc80/1563170537231-I3CEE7AR3F4ADX4MN8E5/image-asset.jpeg"
                         }} alt="image" />
                     </AspectRatio>
-                    <Center bg="warning.400" _dark={{
+                    <Center bg="warning.400" style={draw.banner} _dark={{
                         bg: "warning.400"
                     }} _text={{
                         color: "warmGray.50",

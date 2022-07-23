@@ -31,7 +31,7 @@ const firebaseConfig = {
 
 initializeApp(firebaseConfig);
 
-function App() {
+export default function App() {
   // create a stack nav
   const Stack = createNativeStackNavigator();
 
@@ -60,5 +60,3 @@ function App() {
 
   );
 }
-
-export default App;
