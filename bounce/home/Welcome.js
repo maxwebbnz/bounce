@@ -3,7 +3,8 @@
  * All rights reserved.
  */
 import { useState, useRef } from 'react'
-import { ImageBackground, View, Text, StyleSheet, Button, Dimensions, Image } from 'react-native';
+import { ImageBackground, View, Text, StyleSheet, Button, Dimensions } from 'react-native';
+import { Image } from 'native-base'
 import PhoneInput from "react-native-phone-number-input";
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -16,7 +17,7 @@ import { dataService } from '../dataservices/handler';
 
 //* Background Image
 import BackgroundImage from '../assets/background.jpg';
-import Icon from '../assets/logo.png';
+import Icon from '../assets/logoinverted.png';
 
 export default function Welcome() {
     const [value, setValue] = useState("");
@@ -44,7 +45,7 @@ export default function Welcome() {
         },
         drawer: {
             width: '100%',
-            height: '45%',
+            height: '50%',
             marginTop: 'auto',
             borderTopLeftRadius: 20,
             borderTopRightRadius: 20,
@@ -64,7 +65,7 @@ export default function Welcome() {
                         style={styles.drawer}
 
                     >
-                        <Image source={Icon} style={{ width: '20%', height: '50%', marginTop: "10%" }} />
+                        <Image source={Icon} style={{ marginTop: "5%", paddingBottom: "10%", height: 120 }} alt="Logo" size="lg" />
                     </LinearGradient>
 
                 </View>
