@@ -7,6 +7,11 @@ import { ImageBackground, View, Text, StyleSheet, Button, Dimensions } from 'rea
 import { Image } from 'native-base'
 import PhoneInput from "react-native-phone-number-input";
 import { LinearGradient } from 'expo-linear-gradient';
+import Animated, {
+    withSpring,
+    useAnimatedStyle,
+    useSharedValue,
+} from 'react-native-reanimated';
 
 //* Authentication controller
 import Authenticate from '../auth/Authenticate';
@@ -20,6 +25,8 @@ import BackgroundImage from '../assets/background.jpg';
 import Icon from '../assets/logoinverted.png';
 
 export default function Welcome() {
+    const offset = useSharedValue(0);
+
     const [value, setValue] = useState("");
     const [valid, setValid] = useState(false);
     const [formattedValue, setFormattedValue] = useState("");
@@ -45,7 +52,9 @@ export default function Welcome() {
         },
         drawer: {
             width: '100%',
-            height: '50%',
+            height: windowHeight,
+            flex: 1,
+            top: "30%",
             marginTop: 'auto',
             borderTopLeftRadius: 20,
             borderTopRightRadius: 20,
@@ -55,20 +64,33 @@ export default function Welcome() {
         }
     })
 
+
+
+    const animatedStyles = useAnimatedStyle(() => {
+        return {
+            transform: [{ translateY: offset.value * -600 }],
+
+        };
+    });
+
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <ImageBackground style={styles.image} source={BackgroundImage} blurRadius={8} resizeMode="cover">
                 <Text style={styles.title}>Bounce</Text>
-                <View style={styles.drawer}>
+                <Animated.View style={[styles.drawer, animatedStyles]}>
                     <LinearGradient
                         colors={['#EE7F68', '#E9B15D']}
-                        style={styles.drawer}
+                        style={[styles.drawer]}
 
                     >
+                        <Button onPress={() => {
+                            offset.value = withSpring(Math.random());
+                        }} title="Move" />
                         <Image source={Icon} style={{ marginTop: "5%", paddingBottom: "10%", height: 120 }} alt="Logo" size="lg" />
                     </LinearGradient>
 
-                </View>
+
+                </Animated.View>
 
                 {/* I commented this out for now to redo the login screen, feel free to uncomment to work on anything */}
 
