@@ -4,18 +4,21 @@
  */
 import { useState, useRef } from 'react'
 import { ImageBackground, View, Text, StyleSheet, Button, Dimensions } from 'react-native';
+import { Image } from 'native-base'
 import PhoneInput from "react-native-phone-number-input";
 import { LinearGradient } from 'expo-linear-gradient';
 
 //* Authentication controller
 import Authenticate from '../auth/Authenticate';
+import { AuthErrorCodes } from 'firebase/auth';
 
 //? for testing
 import { dataService } from '../dataservices/handler';
 
 //* Background Image
 import BackgroundImage from '../assets/background.jpg';
-import { AuthErrorCodes } from 'firebase/auth';
+import Icon from '../assets/logoinverted.png';
+
 export default function Welcome() {
     const [value, setValue] = useState("");
     const [valid, setValid] = useState(false);
@@ -28,44 +31,46 @@ export default function Welcome() {
             fontSize: 80,
             color: 'white',
             // Position text to the top left. Weird but works, if you can find a cleaner way to do this please do.
-            transform: [{ rotate: '90deg' }, { translateY: (windowWidth * 0.3) }, { translateX:  (windowHeight * 0.26) }],
+            transform: [{ rotate: '90deg' }, { translateY: (windowWidth * 0.4) }, { translateX: (windowHeight * 0.25) }],
             fontWeight: 'bold',
         },
         phoneInput: {
             marginTop: '5%'
         },
         image: {
-            flex:1, 
+            flex: 1,
             justifyContent: "center",
             width: '100%',
             height: '100%',
         },
         drawer: {
             width: '100%',
-            height: '45%',
+            height: '50%',
             marginTop: 'auto',
             borderTopLeftRadius: 20,
             borderTopRightRadius: 20,
             alignItems: 'center',
             justifyContent: 'flex-start',
-            
+
         }
     })
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <ImageBackground style={ styles.image } source={BackgroundImage} blurRadius={8} resizeMode="cover">
-                    <Text style={styles.title}>Bounce</Text>
-                    <View style={styles.drawer}>
-                        <LinearGradient
-                            colors={['#EE7F68', '#E9B15D']}
-                            style={styles.drawer}
-                            
-                        ><Text style={{color:'white', fontSize: 50, transform: [{translateY: -20}]}}>__</Text></LinearGradient>
-                        
-                    </View>
+            <ImageBackground style={styles.image} source={BackgroundImage} blurRadius={8} resizeMode="cover">
+                <Text style={styles.title}>Bounce</Text>
+                <View style={styles.drawer}>
+                    <LinearGradient
+                        colors={['#EE7F68', '#E9B15D']}
+                        style={styles.drawer}
 
-        {/* I commented this out for now to redo the login screen, feel free to uncomment to work on anything */}
+                    >
+                        <Image source={Icon} style={{ marginTop: "5%", paddingBottom: "10%", height: 120 }} alt="Logo" size="lg" />
+                    </LinearGradient>
+
+                </View>
+
+                {/* I commented this out for now to redo the login screen, feel free to uncomment to work on anything */}
 
                 {/* <View style={styles.phoneInput}>
                     <PhoneInput
