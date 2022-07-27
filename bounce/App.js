@@ -34,11 +34,13 @@ initializeApp(firebaseConfig);
 export default function App() {
   // create a stack nav
   const Stack = createNativeStackNavigator();
+  const [currentScreen, setScreen] = React.useState('Home');
+  const navigationRef = React.useRef(null);
 
 
   const recaptchaRef = React.useRef(null)
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef} onStateChange={() => setScreen(navigationRef.current.getCurrentRoute().name + " called in app")}>
 
       <NativeBaseProvider>
         <FirebaseRecaptchaVerifierModal
@@ -51,9 +53,10 @@ export default function App() {
           {/* Screens */}
           <Stack.Screen name="Home" component={Welcome} options={{ headerShown: false }} />
           <Stack.Screen name="HomeContent" component={HomeContent} options={{ headerShown: false, animation: 'none' }} />
-        </Stack.Navigator>
 
-        <Navigation />
+        </Stack.Navigator>
+        {currentScreen === "Home" ? null : <Navigation />}
+
 
       </NativeBaseProvider>
     </NavigationContainer>

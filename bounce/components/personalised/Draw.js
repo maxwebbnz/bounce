@@ -37,6 +37,7 @@ const draw = StyleSheet.create({
 })
 
 function MainTopic() {
+
     return (
         <Box alignItems="center">
             <Box maxW="80" rounded="lg" overflow="hidden" borderColor="coolGray.200" borderWidth="1" _dark={{
