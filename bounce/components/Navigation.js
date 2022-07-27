@@ -14,8 +14,8 @@ import { useNavigation } from '@react-navigation/native';
  *@return UI/controller.
  *=============================================**/
 export default function Navigation() {
-    // hook call
     const navigation = useNavigation()
+    // hook call
     // return JSX
     return (
         <Box bg="white" width="100%" maxW="100%" alignSelf="center">
