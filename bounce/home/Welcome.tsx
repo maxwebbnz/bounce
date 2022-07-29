@@ -3,6 +3,7 @@
  * All rights reserved.
  */
 import { useState, useRef } from "react";
+import React from "react";
 import {
   ImageBackground,
   View,

@@ -3,6 +3,7 @@
  * All rights reserved.
  */
 import { View, StyleSheet } from "react-native";
+import React from "react";
 import { globalStyle } from "../styles/global/global";
 import homeStyle from "../styles/home/Home";
 import { LinearGradient } from "react-native-gradients";
